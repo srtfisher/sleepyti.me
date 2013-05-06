@@ -1,12 +1,11 @@
 {
-  "name": "application-name",
+  "name": "sleepytime node responsive",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app"
   },
   "dependencies": {
-    "node": "0.8.x",
     "express": "3.1.0",
     "jade": "*",
     "less-middleware": "*"
