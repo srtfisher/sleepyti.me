@@ -11,3 +11,12 @@ body {
   padding: 20px;
   margin: 0 0 40px;
 }
+.prompt {
+  padding: 20px;
+}
+.prompt .text {
+  font-size: 20px;
+  text-align: center;
+  line-height: 30px;
+  padding: 20px 0;
+}
