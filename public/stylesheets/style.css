@@ -1,7 +1,13 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #eee;
 }
-a {
-  color: #00B7FF;
+.container {
+  background: white;
+  padding: 0;
+  box-shadow: 0 1px 16px -5px rgba(0, 0, 0, 0.5);
+}
+#title {
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  margin: 0 0 40px;
 }
