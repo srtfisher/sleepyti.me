@@ -1,18 +1,11 @@
+/**
+ * Sleepyti.me
+ *
+ * @author David Shaw <dshaw dot jobs at gmail dot com>
+ *
+ * Forked by Sean Fisher <hi@seanfisher.co>
+ */
 
-<!-----------------------------------------------------
-sleepyti.me bedtime calculator
-Author: David Shaw (dshaw dot jobs at gmail dot com)
-URL: http://github.com/davidshaw/sleepyti.me/
------------------------------------------------------->
-
-<html>
-<head>
-<title>sleepyti.me bedtime calculator</title>
-<META NAME="Description" CONTENT="Sleepyti.me is a bedtime calculator that can help you calculate when to fall asleep. By counting backwards in sleep cycles, sleepyti.me has the ability to help you wake up refreshed, instead of feeling groggy. Sleepyti.me can also help you figure out what time to set your alarm if you are going to sleep at that moment.">
-<META NAME="Keywords" CONTENT="sleep, refreshed, sleeping, health, bedtime, bed, bed time, calculator, ajax, javascript">
-<META NAME="robots" CONTENT="index">
-<script src="jquery.js"></script>
-<script>
 $(document).ready(function() {
 	function ren() {
 		// render the page -- in case you're wondering, 
@@ -47,7 +40,7 @@ $(document).ready(function() {
 		mrend = mrend + '</select></td><td><select id="ampm">' + 
 		'<option>AM</option><option>PM</option></select></td></tr>' +
 		'<tr><td><hr color="white"></td></tr>' +
-		'<tr valign=TOP><td></td><td align="center"><span id="nowtop"><hr color="white" width="25%"><big><font color="#666666"><i>or, find out when to wake up<br/>if you go to bed now</i></font></big></td><td align="center"><hr color="white" width="25%"><input type="button" value="zzz" id="sleepnow"/></span></td>' +
+		'<tr valign=TOP><td></td><td align="center"><span id="nowtop"><hr color="white" width="25%"><big><font color="#666666"><i>or, find out when to wake up<br/>if you go to bed now</i></font></big></td><td align="center"><hr color="white" width="25%"><input type="button" class="btn btn-large btn-primary" value="zzz" id="sleepnow"/></span></td>' +
 		'<td></td></span>' +
 		'<td></tr><tr><span class="results" style="display:none;"></span></td>' + 
 		'</tr></table>';
@@ -297,52 +290,3 @@ $(document).ready(function() {
 		putads();
 	});
 });
-</script>
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-19580945-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
-</head>
-<body link="#0080FF" vlink="#0080FF">
-<noscript><font face="Garamond" size="5"><center>Hello, and welcome to sleepyti.me. Sleepyti.me is a bedtime calculator that counts backwards in sleep cycles and tells you when to go to sleep so that you can wake up refreshed! This site is written in Javascript, which must be enabled in order to use the page. Thanks for visiting, and sorry for the inconvenience!</noscript>
-<div id="tit"></div>
-<div id="main"></div>
-<div id="instant" style="display:none;"></div>
-<div id="amazon" style="display:none;" align="center" valign="bottom">
-<br/><br/><hr color="#CCCCCC" width="30%"><font face="Garamond" size=5 color="#666666"><i>Sleepyti.me is provided as a free service thanks to support from our ads.<br/><br/>
-
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-7082199327067068";
-/* sleepy */
-google_ad_slot = "4113086282";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
-<br/><a href="http://sleepyti.me"><center><h3>back</h3></center></a>
-
-</div>
-<div id="fb">
-<hr color="white">
-<hr color="white">
-<hr color="white">
-<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsleepyti.me&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
-
-</div>
-</body>
-</html>
