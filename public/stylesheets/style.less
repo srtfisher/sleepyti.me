@@ -1,3 +1,6 @@
+@import url("http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic");
+@font: "Lato", sans-serif;
+
 body {
     background: #eee;
 }
@@ -9,6 +12,7 @@ body {
 }
 
 #title {
+    font-family: @font;
     border-bottom: 1px solid #ddd;
     padding: 20px;
     margin: 0 0 40px;
@@ -16,6 +20,8 @@ body {
 
     h1 {
         //color: white;
+
+        span { font-weight: 500; }
     }
 }
 
@@ -27,5 +33,42 @@ body {
         text-align: center;
         line-height: 30px;
         padding: 20px 0;
+    }
+}
+
+#wake-up-when {
+    text-align: center;
+}
+
+#result-text {
+    padding: 20px;
+
+    p {
+        font-size: 20px;
+        line-height: 30px;
+
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+
+    #title {
+        padding: 15px 0;
+        margin: 0;
+
+        h1 {
+            font-size: 21px;
+            text-align: center;
+            line-height: 23px;
+            margin: 0;
+        }
+    }
+
+    #dropdown-hours select, #dropdown-hours button {
+        display: block;
+        width: 100%;
     }
 }

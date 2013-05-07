@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic");
 body {
   background: #eee;
 }
@@ -7,9 +8,13 @@ body {
   box-shadow: 0 1px 16px -5px rgba(0, 0, 0, 0.5);
 }
 #title {
+  font-family: "Lato", sans-serif;
   border-bottom: 1px solid #ddd;
   padding: 20px;
   margin: 0 0 40px;
+}
+#title h1 span {
+  font-weight: 500;
 }
 .prompt {
   padding: 20px;
@@ -19,4 +24,34 @@ body {
   text-align: center;
   line-height: 30px;
   padding: 20px 0;
+}
+#wake-up-when {
+  text-align: center;
+}
+#result-text {
+  padding: 20px;
+}
+#result-text p {
+  font-size: 20px;
+  line-height: 30px;
+}
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+  #title {
+    padding: 15px 0;
+    margin: 0;
+  }
+  #title h1 {
+    font-size: 21px;
+    text-align: center;
+    line-height: 23px;
+    margin: 0;
+  }
+  #dropdown-hours select,
+  #dropdown-hours button {
+    display: block;
+    width: 100%;
+  }
 }
