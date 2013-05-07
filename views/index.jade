@@ -5,14 +5,17 @@ block content
         p Hello, and welcome to sleepyti.me. Sleepyti.me is a bedtime calculator that counts backwards in sleep cycles and tells you when to go to sleep so that you can wake up refreshed! This site is written in Javascript, which must be enabled in order to use the page. Thanks for visiting, and sorry for the inconvenience!
     
     .container
-
         #title(style='display:none;')
             h1 sleepyti.me 
                 span bedtime calculator
-        #wake-up-prompt(style='display:none;').prompt
-            .text I have to wake up at
-            #dropdown-hours
-        #wake-up-when(style='display:none;').prompt
-            .text Find out when to wake up if you go to bed now
-            button(class='btn btn-primary btn-large', id='sleepnow') Find out Now!
-        #result-text(style='display: none;')
+        #inner-wrap
+            #wake-up-prompt(style='display:none;').prompt
+                .text I have to wake up at
+                #dropdown-hours
+            #wake-up-when(style='display:none;').prompt
+                .text Find out when to wake up if you go to bed now
+                button(class='btn btn-primary btn-large', id='sleepnow') Find out Now!
+            #result-text(style='display: none;')
+
+    a(href="https://github.com/srtfisher/sleepyti.me", id='github-fork')
+        img(style="position: absolute; top: 0; right: 0; border: 0;", src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png", alt="Fork me on GitHub")

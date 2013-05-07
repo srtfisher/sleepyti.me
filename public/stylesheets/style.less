@@ -2,13 +2,26 @@
 @font: "Lato", sans-serif;
 
 body {
-    background: #eee;
+    background: white;
+
+    transition:all .2s linear; 
+    -o-transition:all .2s linear; 
+    -moz-transition:all .2s linear; 
+    -webkit-transition:all .2s linear;
 }
 
 .container {
-    background: white;
     padding: 0;
-    box-shadow: 0 1px 16px -5px rgba(0, 0, 0, 0.5);
+
+    @media (min-width: 481px) {
+        #inner-wrap {
+            background: #f3f2f0;
+            padding: 30px;
+            margin: 0 -30px;
+            border-top: 1px solid rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+    }
 }
 
 #title {
@@ -71,4 +84,6 @@ body {
         display: block;
         width: 100%;
     }
+
+    #github-fork { display: none;}
 }
