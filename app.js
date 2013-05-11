@@ -28,6 +28,9 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/at/:hour/:minute/:am_pm', routes.viewSpecific)
+app.get('/now', routes.viewNow);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

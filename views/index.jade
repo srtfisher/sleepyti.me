@@ -12,6 +12,28 @@ block content
             #wake-up-prompt(style='display:none;').prompt
                 .text I have to wake up at
                 #dropdown-hours
+                    select#hour
+                        option (hour)
+
+                        - for (var h = 1; h <= 12; h++) {
+                            option #{h}
+                        - }
+
+                    select#minute
+                        option (minute)
+                        - for (var m = 0; m <= 55; m += 5) {
+                            - if (m < 10)
+                                option 0#{m}
+                            - else
+                                option #{m}
+                        - }
+
+                    select#ampm
+                        option#AM AM
+                        option#PM PM
+
+                    button#wake-up-calculate.btn Calculate
+
             #wake-up-when(style='display:none;').prompt
                 .text Find out when to wake up if you go to bed now
                 button(class='btn btn-primary btn-large', id='sleepnow') Find out Now!

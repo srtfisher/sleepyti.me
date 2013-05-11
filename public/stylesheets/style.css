@@ -18,6 +18,10 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
 }
+.container #dropdown-hours select,
+.container #dropdown-hours button {
+  margin: 0 5px 0 0;
+}
 .container footer {
   padding: 20px 0;
 }

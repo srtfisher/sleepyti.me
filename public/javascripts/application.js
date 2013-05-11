@@ -16,29 +16,7 @@ window.Sleepy = (function()
         {
             // Show some stuff
             $("#title").show();
-
-            // Fill in the drop down hours
-            var mrend = '<select id="hour"><option>(hour)</option>';
-
-            // populate our lists
-            for (var h = 1; h <= 12; h++)
-                mrend += '<option>' + h + '</option>';   
-
-            mrend += '</select><select id="minute"><option>(minute)</option>';
-
-            for (var m = 0; m <= 55; m += 5) {
-                if (m < 10)
-                    mrend += '<option value="' + m + '">0' + m + '</option>';
-                else
-                    mrend += '<option>' + m + '</option>';
-            }
-
-            mrend += '</select><select id="ampm">' + 
-            '<option>AM</option><option>PM</option></select>';
-
-            mrend += '<button id="wake-up-calculate" class="btn">Calculate</button>';
-
-            $('#dropdown-hours').html(mrend);
+            $('#dropdown-hours').show();
 
             // Setuo bindings
             this.bind();
@@ -78,10 +56,10 @@ window.Sleepy = (function()
              * Clicks calculate button, refers to on screen calcuate function
              */
             $('#wake-up-calculate').click(function () {
-                console.log('CLICK');
                 if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
                     return false;
 
+                Sleepy.setupURL();
                 Sleepy.calculateOnscreen();
             });
 
@@ -89,10 +67,10 @@ window.Sleepy = (function()
              * user changes the list, so we calculate times
              */
             $('#dropdown-hours select').change(function () {
-                console.log('change');
                 if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
                     return false;
 
+                Sleepy.setupURL();
                 Sleepy.calculateOnscreen();
             });
         },
@@ -308,7 +286,7 @@ window.Sleepy = (function()
             txt += '<p>The average adult human takes <strong>fourteen minutes</strong> to fall asleep, so plan accordingly!</p>';
             txt += '<p>sleepyti.me works by counting backwards in <strong>sleep cycles</strong>. Sleep cycles typically last <strong>90 minutes</strong>.</p>';
             txt += '<p>Waking up in the middle of a sleep cycle leaves you feeling tired and groggy, but waking up <em>in between</em> cycles lets you wake up feeling refreshed and alert!</p>';
-            
+            txt += '<p><a href="/">Go back to the home page</a>.</p>';
             $('#result-text').html(txt).fadeIn()
             
             var wtime = "";
@@ -320,6 +298,32 @@ window.Sleepy = (function()
 
             $('.waketime').html(wtime)
                 .fadeIn(2000);
+        },
+
+        /**
+         * View a specific linkable time
+         */
+        viewSpecific: function(hour, minute, am_pm) {
+            am_pm = am_pm.toUpperCase();
+
+            $("#hour").val(hour);
+            $("#minute").val(minute);
+            $('#ampm').val(am_pm);
+
+            Sleepy.calculateOnscreen();
+        },
+
+        /**
+         * Use pushState to save the URL
+         */
+        setupURL: function() {
+            if(history.pushState) {
+                var am_pm = $("#ampm").val().toLowerCase(),
+                    hour = $("#hour").val(),
+                    minute = $("#minute").val();
+
+                history.pushState({}, "sleeptime responsive by srtfisher", "/at/"+hour+"/"+minute+"/"+am_pm);
+            }
         }
     }
 })();
