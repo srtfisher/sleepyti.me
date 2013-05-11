@@ -25,6 +25,13 @@ body {
   color: #888;
   font-size: 15px;
 }
+.container footer p a {
+  color: #555;
+}
+.container footer p a:hover {
+  color: black;
+  text-decoration: none;
+}
 #title {
   font-family: "Lato", sans-serif;
   border-bottom: 1px solid #ddd;
