@@ -32,6 +32,8 @@ app.get('/at/:hour/:minute/:am_pm', routes.viewSpecific)
 app.get('/now', routes.viewNow);
 
 
+app.get('/json/now', routes.knockoutNow);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

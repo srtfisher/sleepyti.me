@@ -50,6 +50,8 @@ window.Sleepy = (function()
                 $('#result-text').html(answ);
                 $('#result-text').fadeIn();
                 $('#bit').show(250);
+
+                Sleepy.setupURL('now');
             });
             
             /**
@@ -59,7 +61,7 @@ window.Sleepy = (function()
                 if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
                     return false;
 
-                Sleepy.setupURL();
+                Sleepy.setupURL('specific');
                 Sleepy.calculateOnscreen();
             });
 
@@ -70,7 +72,7 @@ window.Sleepy = (function()
                 if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
                     return false;
 
-                Sleepy.setupURL();
+                Sleepy.setupURL('specific');
                 Sleepy.calculateOnscreen();
             });
         },
@@ -114,23 +116,21 @@ window.Sleepy = (function()
          * time + :14 + (multiples of 90 mins)
          */
         knockout: function(rightnow) {
-            var r = ''; // return string
-            var hr = rightnow.getHours();
-            var dhr = 0; // separate variable to display because (24 hr clock)
-            var ap = '';
+            var r = '', // return string
+                hr = rightnow.getHours(),
+                dhr = 0, // separate variable to display because (24 hr clock)
+                ap = '',
+                min = rightnow.getMinutes() + 14; // Takes 14 minutes to go to sleep
 
-
-            // it takes 14 minutes to fall asleep
-            var min = rightnow.getMinutes() + 14;
             if (min > 60) {
-            min = min - 60;
-            hr = hr + 1;
+                min -= 60;
+                hr += 1;
 
                 if (hr >= 24) {
                     if (hr == 24) {
                         hr = 0; // midnight, must adjust!
                     }
-                    else if (hr == 25) {
+                    else if (hr == 25){
                         hr = 1;
                     }
                 }
@@ -203,6 +203,7 @@ window.Sleepy = (function()
             }
             r += '</font></h2>';
             r += '<p>A good night\'s sleep consists of 5-6 complete sleep cycles.</p>';
+            r += '<p><a href="/">Go back to the home page</a>.</p>';
             return r;
         },
 
@@ -316,13 +317,18 @@ window.Sleepy = (function()
         /**
          * Use pushState to save the URL
          */
-        setupURL: function() {
-            if(history.pushState) {
+        setupURL: function(which) {
+            if(! history.pushState) return;
+            
+            if (which == 'specific')
+            {
                 var am_pm = $("#ampm").val().toLowerCase(),
                     hour = $("#hour").val(),
                     minute = $("#minute").val();
 
-                history.pushState({}, "sleeptime responsive by srtfisher", "/at/"+hour+"/"+minute+"/"+am_pm);
+                history.pushState({}, document.title, "/at/"+hour+"/"+minute+"/"+am_pm);
+            } else if (which == 'now') {
+                history.pushState({}, "If You Go to Sleep Right Now... - " + document.title, "/now");
             }
         }
     }

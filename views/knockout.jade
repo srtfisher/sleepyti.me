@@ -1,0 +1,15 @@
+p It takes the average human <strong>fourteen minutes</strong> to fall asleep.
+p If you head to bed right now, you should try to wake up at one of the following times:
+
+h2
+    font(color='#666666')
+        each item,ctr in timeIndex
+            // super simple :)
+            if ctr > 0
+                em or 
+
+            font(color='#{item.color}') #{item.human_hr}:#{item.human_min} #{item.ap} 
+    
+p A good night's sleep consists of 5-6 complete sleep cycles.
+p
+    a(href='/') Go back to the home page.
