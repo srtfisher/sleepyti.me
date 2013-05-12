@@ -1,5 +1,18 @@
-include index
-    script
-        $(document).ready(function() {
-            $('#sleepnow').click();
-        });
+extends layout
+
+block content
+    noscript
+        p Hello, and welcome to sleepyti.me. Sleepyti.me is a bedtime calculator that counts backwards in sleep cycles and tells you when to go to sleep so that you can wake up refreshed! This site is written in Javascript, which must be enabled in order to use the page. Thanks for visiting, and sorry for the inconvenience!
+    
+    .container
+        #title(style='display:none;')
+            h1 sleepyti.me 
+                span bedtime calculator
+        #inner-wrap
+            
+            #result-text
+                include knockout
+
+        footer
+            p(align='center') Forked by 
+                a(href='http://seanfisher.co/', rel='self') Sean Fisher
