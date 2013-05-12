@@ -29,6 +29,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/at/:hour/:minute/:am_pm', routes.viewSpecific)
+app.get('/at-json/:hour/:minute/:am_pm', routes.viewSpecificInternal)
 app.get('/now', routes.viewNow);
 
 

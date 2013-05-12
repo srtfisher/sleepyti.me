@@ -108,3 +108,22 @@ body {
 
     #github-fork { display: none;}
 }
+
+// Color coding things
+.intensity {
+    // Best to worst
+    @baseInten = '#00CC33';
+    @c = 0;
+
+    &.bw-1 { color: darken(@baseInten, 0%); }
+    &.bw-2 { color: darken(@baseInten, 5%); }
+    &.bw-3 { color: darken(@baseInten, 10%); }
+    &.bw-4 { color: darken(@baseInten, 15%); }
+    &.bw-5 { color: darken(@baseInten, 20%); }
+
+    &.wb-1 { color: darken(@baseInten, 20%); }
+    &.wb-2 { color: darken(@baseInten, 15%); }
+    &.wb-3 { color: darken(@baseInten, 10%); }
+    &.wb-4 { color: darken(@baseInten, 5%); }
+    &.wb-5 { color: @baseInten; }
+}

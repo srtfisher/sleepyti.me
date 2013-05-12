@@ -31,18 +31,9 @@ window.Sleepy = (function()
         bind: function()
         {
             /**
-             * handle "sleep now" requests
-             * this currently fades out the #main id,
-             * and works in a totally separate div
+             * Calls on /json/now to get the HTML for now
              */
             $("#sleepnow").click(function(e) {
-                var st = '';
-
-                // this is the text we return
-                var answ = '';
-                var d = new Date();
-
-                // knockout takes a Date() and returns a string of wake times
                 $.get('/json/now', function(data)
                 {
                     $('#result-text').html(data);
@@ -110,18 +101,6 @@ window.Sleepy = (function()
 
             var r = [rhr, rmin, a];
             return r;
-        },
-
-        /**
-         * Takes a Date() object and returns a string with wake times
-         * 
-         * time + :14 + (multiples of 90 mins)
-         */
-        knockout: function() {
-            $.get('/json/now', function(data)
-            {
-
-            }, 'html');
         },
 
         /**
