@@ -34,67 +34,63 @@ exports.knockoutNow = function(req, res) {
         min = rightnow.getMinutes() + 14; // Takes 14 minutes to go to sleep
 
     if (min > 60) {
-        min -= 60;
+        min += -60;
         hr += 1;
 
-        if (hr >= 24) {
-            if (hr == 24) {
-                hr = 0; // midnight, must adjust!
-            } else if (hr == 25) {
-                hr = 1;
-            }
-        }
+        if (hr >= 24) 
+            hr += -24;
     }
 
     // Let's do some math
     timeIndex = [];
     for (var ctr = 0; ctr < 6; ctr++) {
-        // Object we're going to push
-        item = {};
+        if (ctr == 0) {
+            var running_hour = hr,
+                running_min = min,
+                running_ampm = 'am',
+                hour_count = 3;
 
-        if (min < 30) {
-            min = min + 30;
+            // Add three hours to skip one cycle
+            running_hour += 3;
+
         } else {
-            min -= 30;
-            hr += 1;
-        }
-        
-        hr += 1;
+            // Increase it by 1.5 hours
+            running_hour += 1;
+            running_min += 30;
 
-        if (hr == 24) hr = 0;
-        if (hr == 25) hr = 1;
-        
-        if (hr < 12) {
-            ap = 'AM';
-            dhr = hr;
-            
-            if (hr === 0)
-                dhr = "12";
+            hour_count += 1.5;
         }
-        else {
-            ap = 'PM';
-            dhr = hr - 12;  
-        }
-        if (dhr === 0)
-            dhr = 12;
 
-        item.hour = hr;
-        item.min = min;
-        item.human_hr = dhr;
-        item.ap = ap;
+        // Clean up the times
+        if (running_hour > 23)
+            running_hour += -24;
 
-        // Convert Minute
-        if (min > 9)
-            item.human_min = String(min);
+        if (running_min > 59)
+            running_min += -60;
+
+        if (running_hour >= 12)
+            running_ampm = 'pm';
         else
-            item.human_min = '0' + min;
+            running_ampm = 'am';
 
-        if (ctr == 4 || ctr == 5)
-            item.color = '#00CC33';
-        else if (ctr == 3)
-            item.color = '#99CC66';
+        item = {};
+        item.hr = item.human_hr = running_hour;
+
+        if (running_hour > 12)
+            item.human_hr += -12;
+        else if (running_hour == 0)
+            item.human_hr = 12;
+
+        item.human_hr = String(item.human_hr);
+        item.min = running_min;
+
+        if (running_min > 9)
+            item.human_min = String(running_min);
         else
-            item.color = '#666666';
+            item.human_min = '0' + running_min;
+
+        item.am_pm = running_ampm.toUpperCase();
+        item.hours = hour_count;
 
         timeIndex[ctr] = item;
     }
@@ -164,7 +160,7 @@ exports.viewSpecificInternal = function(req, res) {
             item.human_hr += -12;
         else if (running_hour == 0)
             item.human_hr = 12;
-        
+
         item.human_hr = String(item.human_hr);
         item.min = running_min;
 
