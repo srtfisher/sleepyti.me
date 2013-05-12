@@ -2,11 +2,11 @@ extends layout
 
 block content
     noscript
-        p Hello, and welcome to sleepyti.me. Sleepyti.me is a bedtime calculator that counts backwards in sleep cycles and tells you when to go to sleep so that you can wake up refreshed! This site is written in Javascript, which must be enabled in order to use the page. Thanks for visiting, and sorry for the inconvenience!
+        p Hello, and welcome to Sleep Time! Sleep Time is a bedtime calculator that counts backwards in sleep cycles and tells you when to go to sleep so that you can wake up refreshed! This site is written in Javascript, which must be enabled in order to use the page. Thanks for visiting, and sorry for the inconvenience!
     
     .container
-        #title(style='display:none;')
-            h1 sleepyti.me 
+        #title
+            h1 Sleepy Time 
                 span bedtime calculator
         #inner-wrap
             #wake-up-prompt(style='display:none;').prompt
@@ -36,7 +36,7 @@ block content
 
             #wake-up-when(style='display:none;').prompt
                 .text Find out when to wake up if you go to bed now
-                button(class='btn btn-primary btn-large', id='sleepnow') Find out Now!
+                a(class='btn btn-primary btn-large', id='sleepnow', href='/now') Find out Now!
             #result-text(style='display: none;')
 
         include footer

@@ -35,6 +35,7 @@ window.Sleepy = (function()
              */
             $("#sleepnow").unbind('click')
             .click(function(e) {
+                e.preventDefault();
                 $.get('/backend/now', function(data)
                 {
                     $('#result-text').html(data);
