@@ -103,17 +103,20 @@ body {
   color: #00661a;
 }
 .intensity.wb-1 {
-  color: #00661a;
+  color: #004d13;
 }
 .intensity.wb-2 {
-  color: #008020;
+  color: #00661a;
 }
 .intensity.wb-3 {
-  color: #009926;
+  color: #008020;
 }
 .intensity.wb-4 {
-  color: #00b32d;
+  color: #009926;
 }
 .intensity.wb-5 {
+  color: #00b32d;
+}
+.intensity.wb-6 {
   color: #00cc33;
 }

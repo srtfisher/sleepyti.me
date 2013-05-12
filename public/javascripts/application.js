@@ -105,10 +105,9 @@ window.Sleepy = (function()
                 minute = '0' + minute;
             else
                 minute = String(minute);
-            
+
             $("#hour").val(hour);
             $("#minute").val(minute);
-            console.log(minute, $('#minute').val());
             $('#ampm').val(am_pm);
 
             Sleepy.calculateOnscreen();
