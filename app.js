@@ -1,8 +1,8 @@
-
 /**
- * Module dependencies.
+ * Sleep Time Bedtime Calculator
+ *
+ * @license MIT
  */
-
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
