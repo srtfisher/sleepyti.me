@@ -49,18 +49,17 @@ exports.knockoutNow = function(req, res) {
     // Let's do some math
     timeIndex = [];
     for (var ctr = 0; ctr < 6; ctr++) {
-        // add an hour and a half
         // Object we're going to push
         item = {};
 
         if (min < 30) {
             min = min + 30;
         } else {
-            min = min - 30;
-            hr = hr + 1;
+            min -= 30;
+            hr += 1;
         }
         
-        hr = hr + 1;
+        hr += 1;
 
         if (hr == 24) hr = 0;
         if (hr == 25) hr = 1;
@@ -69,23 +68,21 @@ exports.knockoutNow = function(req, res) {
             ap = 'AM';
             dhr = hr;
             
-            if (hr === 0) {
+            if (hr === 0)
                 dhr = "12";
-            }
         }
         else {
             ap = 'PM';
             dhr = hr - 12;  
         }
-        if (dhr === 0) {
+        if (dhr === 0)
             dhr = 12;
-        }
 
         item.hour = hr;
         item.min = min;
         item.human_hr = dhr;
         item.ap = ap;
-        
+
         // Convert Minute
         if (min > 9)
             item.human_min = String(min);
@@ -99,17 +96,14 @@ exports.knockoutNow = function(req, res) {
         else
             item.color = '#666666';
 
-        console.log(item);
         timeIndex[ctr] = item;
     }
+
+    // Launch it out!
     res.render('knockout', {
         hr: hr,
         min: min,
         ap: ap,
         timeIndex: timeIndex
-    }/*, function(err, string) {
-        res.json({
-            html: string
-        }); }*/
-    );
+    });
 };

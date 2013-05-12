@@ -43,15 +43,17 @@ window.Sleepy = (function()
                 var d = new Date();
 
                 // knockout takes a Date() and returns a string of wake times
-                answ = Sleepy.knockout(d);
+                $.get('/json/now', function(data)
+                {
+                    $('#result-text').html(data);
 
-                // Hide Prompts show the stuff
-                $('.prompt').hide();
-                $('#result-text').html(answ);
-                $('#result-text').fadeIn();
-                $('#bit').show(250);
+                    // Hide Prompts show the stuff
+                    $('.prompt').hide();
+                    $('#result-text').fadeIn();
+                    $('#bit').show(250);
 
-                Sleepy.setupURL('now');
+                    Sleepy.setupURL('now');
+                }, 'html');
             });
             
             /**
@@ -115,96 +117,11 @@ window.Sleepy = (function()
          * 
          * time + :14 + (multiples of 90 mins)
          */
-        knockout: function(rightnow) {
-            var r = '', // return string
-                hr = rightnow.getHours(),
-                dhr = 0, // separate variable to display because (24 hr clock)
-                ap = '',
-                min = rightnow.getMinutes() + 14; // Takes 14 minutes to go to sleep
+        knockout: function() {
+            $.get('/json/now', function(data)
+            {
 
-            if (min > 60) {
-                min -= 60;
-                hr += 1;
-
-                if (hr >= 24) {
-                    if (hr == 24) {
-                        hr = 0; // midnight, must adjust!
-                    }
-                    else if (hr == 25){
-                        hr = 1;
-                    }
-                }
-            }
-
-            r = '<p>It takes the average human <strong>fourteen minutes</strong> to fall asleep.</p><p>If you head to bed right now, you should try to wake up at one of the following times:</p>';
-            r += '<h2><font color="#666666">';
-
-            for (var ctr = 0; ctr < 6; ctr++) { // normal sleep schedule
-                // add an hour and a half
-                if (min < 30) {
-                    min = min + 30;
-                } else {
-                    min = min - 30;
-                    hr = hr + 1;
-                }
-                
-                hr = hr + 1;
-
-                if (hr == 24) hr = 0;
-                if (hr == 25) hr = 1;
-                
-                if (hr < 12) {
-                    ap = ' AM';
-                    dhr = hr;
-                    
-                    if (hr === 0) {
-                        dhr = "12";
-                    }
-                }
-                else {
-                    ap = ' PM';
-                    dhr = hr - 12;  
-                }
-                if (dhr === 0) {
-                    dhr = 12;
-                }
-                if (ctr === 0) {
-                    if (min > 9) {
-                        r = r  + dhr + ':' + min + ap;
-                    }
-                    else {
-                        r = r + dhr + ':0' + min + ap;
-                    }
-                }
-                else if (ctr == 4 || ctr == 5) {
-                    if (min > 9) {
-                        r = r + ' <i>or</i> <font color="#00CC33">' + dhr + ':' + min + ap + '</font>';
-                    }
-                    else {
-                        r = r + ' <i>or</i> <font color="#00CC33">' + dhr + ':0' + min + ap;
-                    }
-                }
-                else if (ctr == 3) {
-                    if (min > 9) {
-                        r = r + ' <i>or</i> <font color="#99CC66">' + dhr + ':' + min + ap + '</font>';
-                    }
-                    else {
-                        r = r + ' <i>or</i> <font color="#99CC66">' + dhr + ':0' + min + ap + '</font>';
-                    }   
-                }
-                else {
-                    if (min > 9) {
-                        r = r + ' <i>or</i> ' + dhr + ':' + min + ap;
-                    }
-                    else {
-                        r = r + ' <i>or</i> ' + dhr + ':0' + min + ap;
-                    }
-                }   
-            }
-            r += '</font></h2>';
-            r += '<p>A good night\'s sleep consists of 5-6 complete sleep cycles.</p>';
-            r += '<p><a href="/">Go back to the home page</a>.</p>';
-            return r;
+            }, 'html');
         },
 
         /**
