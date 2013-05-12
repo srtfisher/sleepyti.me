@@ -1,5 +1,5 @@
 doctype 5
-html
+html(xmlns="http://www.w3.org/1999/xhtml", xmlns:og="http://ogp.me/ns#", xmlns:fb="http://www.facebook.com/2008/fbml")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
@@ -13,6 +13,13 @@ html
     meta(name="apple-mobile-web-app-capable", content="yes")
     meta(name="apple-mobile-web-app-status-bar-style",content="black")
 
+    // Facebook
+    meta(property="og:title", content="Sleepy Time - Bed Time Calculator")
+    meta(property="og:type", content="website")
+    meta(property="og:url", content="http://seanfisher.co/")
+    meta(property="og:site_name", content="Sleepy Time - Find out when to sleep to wake up feeling refreshed!")
+    meta(property="og:fb:admins", content="100000055958759")
+    meta(property="og:description", content="Sleepy Time - Find out when to sleep to wake up feeling refreshed and not groggy!")
     meta(name='viewport', content="width=device-width, initial-scale=1.0")
   body
     script
