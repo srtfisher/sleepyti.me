@@ -162,7 +162,9 @@ exports.viewSpecificInternal = function(req, res) {
 
         if (running_hour > 12)
             item.human_hr += -12;
-
+        else if (running_hour == 0)
+            item.human_hr = 12;
+        
         item.human_hr = String(item.human_hr);
         item.min = running_min;
 

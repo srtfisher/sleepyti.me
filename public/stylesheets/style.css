@@ -87,3 +87,33 @@ body {
     display: none;
   }
 }
+.intensity.bw-1 {
+  color: #00cc33;
+}
+.intensity.bw-2 {
+  color: #00b32d;
+}
+.intensity.bw-3 {
+  color: #009926;
+}
+.intensity.bw-4 {
+  color: #008020;
+}
+.intensity.bw-5 {
+  color: #00661a;
+}
+.intensity.wb-1 {
+  color: #00661a;
+}
+.intensity.wb-2 {
+  color: #008020;
+}
+.intensity.wb-3 {
+  color: #009926;
+}
+.intensity.wb-4 {
+  color: #00b32d;
+}
+.intensity.wb-5 {
+  color: #00cc33;
+}

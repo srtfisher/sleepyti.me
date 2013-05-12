@@ -29,11 +29,11 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/at/:hour/:minute/:am_pm', routes.viewSpecific)
-app.get('/at-json/:hour/:minute/:am_pm', routes.viewSpecificInternal)
+app.get('/backend/at/:hour/:minute/:am_pm', routes.viewSpecificInternal)
 app.get('/now', routes.viewNow);
 
 
-app.get('/json/now', routes.knockoutNow);
+app.get('/backend/now', routes.knockoutNow);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

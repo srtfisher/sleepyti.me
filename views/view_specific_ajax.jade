@@ -1,12 +1,11 @@
 p You should try to <strong>fall asleep</strong> at one of the following times:
 h2
-  font(color='#666666')
-    each item,ctr in timeIndex
-      // super simple :)
-      if ctr > 0
-          em or 
+  each item,ctr in timeIndex
+    // super simple :)
+    if ctr > 0
+        em or 
 
-      span(class='intensity bw-#{ctr+1}', title='#{item.hours} hours') #{item.human_hr}:#{item.human_min} #{item.am_pm} 
+    span(class='toolt intensity bw-#{ctr+1}', title='#{item.hours} hours of sleep') #{item.human_hr}:#{item.human_min} #{item.am_pm} 
 p Please keep in mind that you should be <i>falling asleep</i> at these times.
 p The average adult human takes <strong>fourteen minutes</strong> to fall asleep, so plan accordingly!
 p sleepyti.me works by counting backwards in <strong>sleep cycles</strong>. Sleep cycles typically last <strong>90 minutes</strong>.
