@@ -1,18 +1,12 @@
-.alert.alert-error
-    p(align='center') We're currently experiencing some errors with this page. Try this later!
-
 p It takes the average human <strong>fourteen minutes</strong> to fall asleep.
 p If you head to bed right now, you should try to wake up at one of the following times:
 
 h2
     font(color='#666666')
-        each item,ctr in timeIndex
-            // super simple :)
-            if ctr > 0
-                em or 
-
-            span(title='#{item.hours} hours of sleep', class="toolt intensity wb-#{ctr+1}") #{item.human_hr}:#{item.human_min} #{item.am_pm} 
+        #knockout-callback
     
 p A good night's sleep consists of 5-6 complete sleep cycles.
 p
     a(href='/') Go back to the home page.
+script(type='text/javascript')
+    Sleepy.nowCallback();

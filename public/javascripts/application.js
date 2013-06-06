@@ -34,45 +34,45 @@ window.Sleepy = (function()
              * Calls on /backend/now to get the HTML for now
              */
             $("#sleepnow").unbind('click')
-            .click(function(e) {
-                e.preventDefault();
-                $.get('/backend/now', function(data)
-                {
-                    $('#result-text').html(data);
+              .click(function(e) {
+                  e.preventDefault();
+                  $.get('/backend/now', function(data)
+                  {
+                      $('#result-text').html(data);
 
-                    // Hide Prompts show the stuff
-                    $('.prompt').hide();
-                    $('#result-text').fadeIn();
-                    $('#bit').show(250);
+                      // Hide Prompts show the stuff
+                      $('.prompt').hide();
+                      $('#result-text').fadeIn();
+                      $('#bit').show(250);
 
-                    Sleepy.setupURL('now');
-                    Sleepy.bind();
-                }, 'html');
-            });
+                      Sleepy.setupURL('now');
+                      Sleepy.bind();
+                  }, 'html');
+              });
             
             /**
              * Clicks calculate button, refers to on screen calcuate function
              */
             $('#wake-up-calculate').unbind('click')
-            .click(function () {
-                if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
-                    return false;
+              .click(function () {
+                  if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
+                      return false;
 
-                Sleepy.setupURL('specific');
-                Sleepy.calculateOnscreen();
-            });
+                  Sleepy.setupURL('specific');
+                  Sleepy.calculateOnscreen();
+              });
 
             /**
              * user changes the list, so we calculate times
              */
             $('#dropdown-hours select').unbind('change')
-            .change(function () {
-                if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
-                    return false;
+              .change(function () {
+                  if ($("#hour").val() == '(hour)' || $("#minute").val() == '(minute)')
+                      return false;
 
-                Sleepy.setupURL('specific');
-                Sleepy.calculateOnscreen();
-            });
+                  Sleepy.setupURL('specific');
+                  Sleepy.calculateOnscreen();
+              });
 
             // tooltips
             $('.toolt').tooltip();
@@ -130,6 +130,24 @@ window.Sleepy = (function()
             } else if (which == 'now') {
                 history.pushState({}, "If You Go to Sleep Right Now... - " + document.title, "/now");
             }
+        },
+
+        /**
+         * Callback to the backend with information about the client's Date
+         */
+        nowCallback: function() {
+          var d = new Date(),
+            hour = d.getHours(),
+            minute = d.getMinutes();
+
+          // Callback
+          $.get('/backend/now/'+hour+'/'+minute, function(data)
+          {
+            // Let's make it work
+            $('#knockout-callback').html(data);
+            Sleepy.bind();
+            
+          }, 'html');
         }
     }
 })();

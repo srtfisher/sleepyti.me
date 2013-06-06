@@ -5,12 +5,14 @@
  */
 
 module.exports = {
-    knockoutTimes: function() {
-        var rightnow = new Date(),
-            hr = rightnow.getHours(),
-            dhr = 0, // separate variable to display because (24 hr clock)
+    /**
+     * @param int hour
+     * @param int minute
+     */
+    knockoutTimes: function(hr, minute) {
+        var dhr = 0, // separate variable to display because (24 hr clock)
             ap = '',
-            min = rightnow.getMinutes() + 14; // Takes 14 minutes to go to sleep
+            min = minute + 14; // Takes 14 minutes to go to sleep
 
         if (min > 60) {
             min += -60;

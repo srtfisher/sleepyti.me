@@ -22,21 +22,28 @@ exports.viewSpecific = function(req, res) {
 };
 
 exports.viewNow = function(req, res) {
-    logic = require('../logic');
-    timeIndex = logic.knockoutTimes();
-
     res.render('now', {
         title: 'sleepytime responsive by srtfisher',
-        timeIndex: timeIndex
     });
 };
 
+exports.viewNowTiny = function(req, res) {
+    res.render('knockout', {
+        title: 'sleepytime responsive by srtfisher',
+    });
+};
+
+// The callback for logic to see when they should fall asleep
+// Client has passed us the current date/time
 exports.knockoutNow = function(req, res) {
+    var hr = parseInt(req.params.hour),
+        min = parseInt(req.params.minute);
+
     logic = require('../logic');
-    timeIndex = logic.knockoutTimes();
+    timeIndex = logic.knockoutTimes(hr, min);
 
     // Launch it out!
-    res.render('knockout', {
+    res.render('knockout_callback', {
         timeIndex: timeIndex
     });
 };
